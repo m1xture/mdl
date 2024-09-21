@@ -8,7 +8,7 @@ const Overlay = styled.div`
   bottom: 0;
   left: 0;
   /* backdrop-filter: blur(2px); */
-  background-color: rgb(0, 0, 0, 0.2);
+  background-color: rgb(0, 0, 0, 0.5);
 `;
 const ModalBlock = styled.div`
   position: absolute;
@@ -16,13 +16,14 @@ const ModalBlock = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 15px;
-  background-color: #eee;
+  background-color: #040404;
+
   border-radius: 15px;
 `;
 
 const ModalTitle = styled.h2`
   font-size: 32px;
-  font-family: "Verdana";
+  color: #dedede;
 `;
 const Form = styled.form`
   padding: 5px;
@@ -32,18 +33,35 @@ const Form = styled.form`
 const Input = styled.input`
   background-color: transparent;
   border: none;
-  outline: 1.5px solid gray;
+  border: 1.5px solid gray;
   padding: 5px;
   border-radius: 5px;
   margin-right: auto;
+  width: 100%;
+  border-right: none;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  color: #eee;
+  &:focus,
+  &:active {
+    outline: none;
+    /* border: none; */
+  }
 `;
 const SubmitBtn = styled.button`
   margin-left: auto;
-  border-radius: 3px;
+  border-radius: 2px;
   border: none;
   /* outline: 1px solid gray; */
-  background-color: gray;
-  color: #eee;
+  background-color: #76b900;
+  color: #181818;
+  padding: 10px;
+`;
+const CloseBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #777777;
 `;
 class Modal extends Component {
   state = {
@@ -87,17 +105,17 @@ class Modal extends Component {
         {!this.state.hidden && (
           <Overlay data-overlay>
             <ModalBlock>
-              <button onClick={this.props.closeModal} data-close>
-                Close
-              </button>
-              <ModalTitle>Subscribe to our mailing</ModalTitle>
+              <CloseBtn onClick={this.props.closeModal} data-close>
+                ✖
+              </CloseBtn>
+              <ModalTitle>Leave your email here</ModalTitle>
               <Form>
                 <Input
                   onChange={this.setValue}
                   autoComplete="false"
                   name="email"
                 />
-                <SubmitBtn>Subcribe</SubmitBtn>
+                <SubmitBtn>Send</SubmitBtn>
               </Form>
             </ModalBlock>
           </Overlay>

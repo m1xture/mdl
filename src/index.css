@@ -1,0 +1,7 @@
+@import-nroamlize;
+
+body {
+  font-family: "Orbitron";
+  background-image: url(./imgs/bg.jpg);
+  background-size: cover;
+}
